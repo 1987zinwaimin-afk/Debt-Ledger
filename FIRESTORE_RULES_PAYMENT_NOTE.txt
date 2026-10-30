@@ -1,0 +1,14 @@
+Zin Min Thu လို Viewer/Owner မသတ်မှတ်ထားသေးသူက ကိုယ်တိုင် ငွေပေးချေနိုင်ရန်
+Firestore Rules မှ transactions CREATE ကို ခွင့်ပြုထားရပါမည်။
+
+အရေးကြီးသည် — ရှိပြီးသား transaction ကို Viewer က update/delete မလုပ်နိုင်ရပါ။
+Owner/Admin/Editor သာ update/delete လုပ်နိုင်ရပါမည်။
+
+အကြံပြုထားသော logic:
+- authenticated user -> transactions CREATE only for interestPaid / principalPaid / installmentPaid
+- request.resource.data.amount > 0
+- request.resource.data.personId ရှိသော people document တကယ်ရှိရမည်
+- transaction UPDATE/DELETE -> Owner/Admin/Editor only
+- loanAdded -> Owner/Admin/Editor only
+
+ဒီဖိုင်သည် Rules အတွက် မှတ်ချက်သာဖြစ်ပြီး Firebase Console ထဲတွင် Rules ကို သီးခြား Publish လုပ်ရပါမည်။
